@@ -20,7 +20,9 @@ $(document).ready(function(){
     //DRY
     $(".panel-main").hide();
     $(".panel-button").on('click',function(){
-        $('#'+$(this).attr('data-panelid')).fadeToggle(200)
+        var panelId = $(this).attr('data-panelid');
+        $('#'+panelId).fadeToggle(200)
+        $("#"+panelId+' .panel-text').html('got em')
     })
 
 
