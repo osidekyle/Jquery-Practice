@@ -1,11 +1,21 @@
 *{
+    .main-row{
+
+        .panel-body{
+            text-align:center;
+            width:20%;
+        }
+        margin-top: 10%;
+        }
+    
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
 
-
-
-#panel{
-   margin:auto;
+#panel,#panel2{
+    border:solid 1px black;
+    border-radius:5%;
+    padding:15%;
+    width:100%;
 }

@@ -5,7 +5,20 @@
           box-sizing: border-box;
 }
 
-#panel {
-  margin: auto;
+* .main-row {
+  height: 25%;
+  margin-top: 10%;
+}
+
+* .main-row .panel-body {
+  text-align: center;
+  width: 20%;
+}
+
+#panel, #panel2 {
+  border: solid 1px black;
+  border-radius: 5%;
+  padding: 15%;
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */
