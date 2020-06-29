@@ -3,12 +3,20 @@ var $orders=$('#order');
 var $name=$("#name");
 var $drink=$("#drink");
 
+var orderTemplate = ""+"<li>"+"<p>name:{{title}}<p>"+"</li>";
+
+function addOrder(order){
+    $orders.append(Mustache.render(orderTemplate, order));
+}
+
+
+
     $.ajax({
         type:'GET',
         url:"https://jsonplaceholder.typicode.com/posts",
         success: function(data){
-           $.each( data, function(item){
-            $orders.append("<li>Order: "+item+"</li>");
+           $.each( data, function(i,item){
+            addOrder(item);
            });
         },
         error: function(){
@@ -19,7 +27,7 @@ var $drink=$("#drink");
 
     $("#add-order").on('click',function(){
             var order={
-                name: $name.val(),
+                title: $name.val(),
                 drink: $drink.val()
             };
 
@@ -29,7 +37,7 @@ var $drink=$("#drink");
                 url:"https://jsonplaceholder.typicode.com/posts",
                 data: order,
                 success:function(newOrder){
-                    $orders.append("<li>Order: "+newOrder.name+"</li>");
+                    addOrder(newOrder);
                 },
                 error: function(){
                     alert("error saving info")
