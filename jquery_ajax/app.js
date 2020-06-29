@@ -3,7 +3,10 @@ var $orders=$('#order');
 var $name=$("#name");
 var $drink=$("#drink");
 
-var orderTemplate = ""+"<li>"+"<p>name:{{title}}<p>"+"</li>";
+var orderTemplate = ""+"<li>"+
+"<p>name:{{title}}<p>"+
+"<button data-id='{{id}}' class='remove'>X</button>"+
+"</li>";
 
 function addOrder(order){
     $orders.append(Mustache.render(orderTemplate, order));
@@ -45,5 +48,23 @@ function addOrder(order){
 
             })
 
+    })
+
+
+    $orders.delegate(".remove",'click',function(){
+        var $li = $(this).closest('li');
+        
+        $.ajax({
+            type:'DELETE',
+            url:"https://jsonplaceholder.typicode.com/posts/"+$(this).attr('data-id'),
+            success: function(){
+                $li.fadeOut(300,function(){
+                    $(this).remove()
+                });
+            },
+            error: function(){
+                alert("error deleting");
+            }
+    })
     })
 });
