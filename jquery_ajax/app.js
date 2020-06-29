@@ -68,4 +68,10 @@ function addOrder(order){
             }
     })
     })
+
+
+    $orders.delegate(".editOrder","click", function(){
+        var $li=$(this).closest('li');
+        $li.find("input.name").val($li.find('span.name').html());
+    })
 });
