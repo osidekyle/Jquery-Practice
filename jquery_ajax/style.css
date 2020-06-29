@@ -1,1 +1,12 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+ul li .edit {
+  display: none;
+}
+
+ul li.edit .edit {
+  display: initial;
+}
+
+ul li.edit .noedit {
+  display: none;
+}
+/*# sourceMappingURL=style.css.map */
