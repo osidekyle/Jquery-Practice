@@ -1,13 +1,41 @@
 $(function(){
 var $orders=$('#order');
+var $name=$("#name");
+var $drink=$("#drink");
 
     $.ajax({
         type:'GET',
-        url:"http://data.fixer.io/api/latest?access_key=25b5ed181f311e4488751ff1beffadac&format=1",
+        url:"https://jsonplaceholder.typicode.com/posts",
         success: function(data){
-           $.each( data.rates, function(i,item){
-            $orders.append("<li>Rate: "+item+"</li>");
+           $.each( data, function(item){
+            $orders.append("<li>Order: "+item+"</li>");
            });
+        },
+        error: function(){
+            alert("Error loading API");
         }
     });
+
+
+    $("#add-order").on('click',function(){
+            var order={
+                name: $name.val(),
+                drink: $drink.val()
+            };
+
+
+            $.ajax({
+                type:'POST',
+                url:"https://jsonplaceholder.typicode.com/posts",
+                data: order,
+                success:function(newOrder){
+                    $orders.append("<li>Order: "+newOrder.name+"</li>");
+                },
+                error: function(){
+                    alert("error saving info")
+                }
+
+            })
+
+    })
 });
